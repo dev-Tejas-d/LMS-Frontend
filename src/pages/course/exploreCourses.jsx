@@ -24,7 +24,7 @@ export default function ExploreCourses(){
             if (filter.category.length>0) params.category = filter.category.join(",");
            let result = await axios.get(`${API}/api/course/getAllCourse`, {params:params});
            
-            setCourses(result.data);
+             setCourses(Array.isArray(result.data) ? result.data : []);
         }
         fetchCourse();  
     },[filter])

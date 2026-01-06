@@ -12,8 +12,8 @@ export default function Filter({onFilterChange}){
 
     useEffect(()=>{
         let fetchCategory = async ()=>{
-            let category = await axios.get(`${API}/api/category/getCategory`)
-            setCategory(category.data)
+            const res = await axios.get(`${API}/api/category/getCategory`);
+            setCategory(Array.isArray(res.data) ? res.data : []);
         }
 
         fetchCategory();

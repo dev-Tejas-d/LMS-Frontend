@@ -14,11 +14,14 @@ export default function Featured(){
         //fetching data from backend
         const fetchCourse = async ()=>{
            let result = await axios.get(`${API}/api/course/getAllCourse`);
-           
+            
+            const data = Array.isArray(result.data) ? result.data : [];
+
             setCourses(result.data.slice(0, 3));
         }
         fetchCourse();  
     },[])
+
 
     return (
         <>
