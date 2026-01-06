@@ -1,0 +1,24 @@
+#CtaSection{
+   background: linear-gradient(to right, #000046, #1cb5e0); 
+   color: white;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   padding: 20px 0px 20px 0px;
+   height: auto ;
+}
+
+#CtaSection h3{
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+#CtaSection button{
+    width: 6em ;
+    height: 2em;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    background-image: linear-gradient(to right, orange, yellow);
+}

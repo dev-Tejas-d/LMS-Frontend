@@ -1,0 +1,22 @@
+#HeroMain {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+background: linear-gradient(to right, #000046, #1cb5e0); 
+  overflow: hidden;
+}
+
+#heroImg{
+    width: 35rem;
+    padding: 5rem;
+}
+
+#heroHeading{
+    color: white;
+}
+
+#heroHeading h6{
+  font-size: 12px;
+}

@@ -1,0 +1,13 @@
+footer{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 0px 20px 0px;
+    background-color: #0a1a2f;
+    color: white;
+}
+
+footer div{
+    display: flex;
+    flex-direction: column;
+    width: 20em;
+}

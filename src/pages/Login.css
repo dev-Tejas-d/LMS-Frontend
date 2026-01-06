@@ -1,0 +1,39 @@
+#form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-self: center;
+    box-shadow: 8px 5px 10px black;
+}
+
+#inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#formHeading{
+    text-align: center;
+}
+
+#form{
+        margin: 20px;
+        padding: 50px;
+        border: 1px solid black;
+        border-radius: 10px;
+        width: 40%;
+}
+
+#remberMeSection{
+    display: flex;
+    justify-content: space-between;
+}
+
+#loginForm{
+    margin-top: 100px;
+}
+
+#ErrDiv{
+    background-color: rgba(255, 0, 0, 0.215);
+    text-align: center;
+}

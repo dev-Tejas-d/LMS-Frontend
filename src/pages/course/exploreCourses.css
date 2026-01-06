@@ -1,0 +1,45 @@
+#EplrCrsSection{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#courseList{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 50px;
+    overflow-y: auto;
+    height: 100%;
+    padding: 20px;
+}
+
+
+#explrCrsHeadings{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+#explorePgCont{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    height: calc(100vh - 150px);
+}
+
+#filterList{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    position: sticky;
+    top: 100px;
+    border-radius: 20px;
+    background-color: wheat;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 100px;
+    box-shadow: 2px 4px 4px;
+}

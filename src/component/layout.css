@@ -1,0 +1,14 @@
+html, body, #root {
+  height: 100%;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;              /* 🔥 key line */
+   /* space for fixed navbar */
+}

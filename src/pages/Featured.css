@@ -1,0 +1,20 @@
+#featuredCont{  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80vh;
+    width: 100%;    
+}
+
+#FtText{
+    display: flex;
+    justify-content: space-around;
+    line-height: 5px;
+}
+
+#featuredDiv{
+    display: flex;
+    width: 75%;
+    align-self: center;
+}
+

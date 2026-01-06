@@ -1,0 +1,35 @@
+#FilterForm{
+    display: flex;
+    flex-direction: column;
+}
+
+#priceFilter{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+} 
+
+#priceFilter input{
+    width: 50%;
+    height: 70%;
+}
+#priceFilter label{
+    line-height: 15px;
+}
+
+#categoryDiv{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px 16px; 
+    margin-top: 25px;
+}
+
+#FilterSubmitBtn{
+    background-color: rgb(7, 87, 215);
+    color: white;
+    border-radius: 30px;
+    width: 80%;
+    border: none;
+    margin-top: 20px;
+    height: 40px;
+}
