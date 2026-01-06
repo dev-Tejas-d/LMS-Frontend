@@ -44,8 +44,8 @@ export default function ExploreCourses(){
                     <Filter  onFilterChange = {setFilter}/>
                 </div>
                 <div id="courseList">
-                {
-                    courses.map((course)=><CourseCard key={course._id} course= {course}/>)
+                {  
+                    Array.isArray(courses) && courses.map((course)=><CourseCard key={course._id} course= {course}/>)
                 }
                 </div>
             </div>

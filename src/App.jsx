@@ -1,6 +1,5 @@
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Navbar from "./component/Navbar";
 import Login from "./pages/LoginPage";
 import Home from "./pages/Home";
 import ExploreCourses from "./pages/course/exploreCourses.jsx";

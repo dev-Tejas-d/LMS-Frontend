@@ -17,7 +17,7 @@ export default function Featured(){
             
             const data = Array.isArray(result.data) ? result.data : [];
 
-            setCourses(result.data.slice(0, 3));
+            setCourses(data.slice(0, 3));
         }
         fetchCourse();  
     },[])
@@ -34,8 +34,8 @@ export default function Featured(){
                 <a href="/">View All Courses-- </a>
             </div>
             <div id="featuredDiv">
-                {
-                    courses.map((course)=><CourseCard key={course._id} course = {course}/>)
+                {   
+                 Array.isArray(courses) && courses.map((course)=><CourseCard key={course._id} course = {course}/>)
                 }
             </div>
         </div>

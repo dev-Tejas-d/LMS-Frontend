@@ -6,7 +6,7 @@ import "../courseDetail/courseDetail.css"
 
 export default function CourseDetail() {
 
-    const [course, setCourse] = useState({})
+    const [course, setCourse] = useState(null)
     const { id: courseId } = useParams()
     const navigate = useNavigate();
 

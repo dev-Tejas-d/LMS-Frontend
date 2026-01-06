@@ -44,7 +44,8 @@ export default function Filter({onFilterChange}){
                 <input id="maxPrice" type="text" value={maxPrice} onChange={e => setMaxPrice(e.target.value)}></input>
             </div>
             <div id="categoryDiv">
-                {categorys.map((category)=>{
+                {
+                 Array.isArray(categorys) && categorys.map((category)=>{
                     return(
                         <div id="categoryItem" key={category._id}>
                         <input id={category._id}  type="checkbox" value={selectedCategories} onChange={()=>handleCheckboxChange(category._id)}></input>
