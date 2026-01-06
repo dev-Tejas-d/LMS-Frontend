@@ -6,9 +6,6 @@ import Filter from "../../component/filter/Filter.jsx";
 
 export default function ExploreCourses(){
     const [courses, setCourses] = useState([]);
-    // const [maxPrice, setMaxPrice] = useState();
-    // const [minPrice, setMinPrice] = useState();
-    // const [title, setTitle] = useState("");
     const [filter, setFilter] = useState({
         minPrice : "",
         maxPrice :"",
