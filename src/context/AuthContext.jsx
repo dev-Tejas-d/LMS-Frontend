@@ -5,7 +5,10 @@ export const Authcontext = createContext();
 
 
 function AuthProvider({children}){
-    const [token, setToken] = useState(false);
+    const [token, setToken] = useState(null);
+
+    const API = import.meta.env.VITE_API_URL;
+
      useEffect(() => {
         const savedToken = localStorage.getItem("token");
 
@@ -20,9 +23,9 @@ function AuthProvider({children}){
 
     const login = async (email, password)=>{
         try{
-            const {data} = await axios.post("/api/user/login", {email, password});
+            const {data} = await axios.post(`${API}/api/user/login`, {email, password});
             localStorage.setItem("token", data.Token);
-            setToken(data.token)
+            setToken(data.Token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${data.Token}` ;
             return true;
 

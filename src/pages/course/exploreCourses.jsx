@@ -12,6 +12,8 @@ export default function ExploreCourses(){
         category :[]
     })
 
+     const API = import.meta.env.VITE_API_URL;
+
     useEffect( ()=>{
         //fetching data from backend
         const fetchCourse = async ()=>{
@@ -20,7 +22,7 @@ export default function ExploreCourses(){
             if (filter.minPrice) params.minPrice = filter.minPrice;
             if (filter.maxPrice) params.maxPrice = filter.maxPrice;
             if (filter.category.length>0) params.category = filter.category.join(",");
-           let result = await axios.get("/api/course/getAllCourse", {params:params});
+           let result = await axios.get(`${API}/api/course/getAllCourse`, {params:params});
            
             setCourses(result.data);
         }

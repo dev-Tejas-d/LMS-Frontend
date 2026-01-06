@@ -8,10 +8,12 @@ import { useEffect, useState } from "react"
 export default function Featured(){
     const [courses, setCourses] = useState([]);
 
+    const API = import.meta.env.VITE_API_URL;
+
     useEffect( ()=>{
         //fetching data from backend
         const fetchCourse = async ()=>{
-           let result = await axios.get("/api/course/getAllCourse");
+           let result = await axios.get(`${API}/api/course/getAllCourse`);
            
             setCourses(result.data.slice(0, 3));
         }

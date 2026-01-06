@@ -8,9 +8,11 @@ export default function Filter({onFilterChange}){
     const [maxPrice, setMaxPrice] = useState("");
     const [selectedCategories, setSelectedCategories] = useState([]);
 
+     const API = import.meta.env.VITE_API_URL;
+
     useEffect(()=>{
         let fetchCategory = async ()=>{
-            let category = await axios.get("/api/category/getCategory")
+            let category = await axios.get(`${API}/api/category/getCategory`)
             setCategory(category.data)
         }
 

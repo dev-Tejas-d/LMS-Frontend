@@ -10,10 +10,11 @@ export default function CourseDetail() {
     const { id: courseId } = useParams()
     const navigate = useNavigate();
 
+    const API = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         const fetchCourse = async () => {
-            const result = await axios.get(`/api/course/${courseId}`)
+            const result = await axios.get(`${API}/api/course/${courseId}`)
             setCourse(result.data)
         }
         fetchCourse()
