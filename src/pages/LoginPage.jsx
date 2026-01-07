@@ -59,7 +59,7 @@ function Login(){
                         <a href="/">Forgot your password?</a>
                     </div>
                 </div>
-                <button  className="btn btn-primary" >Login</button>
+                <button type="submit" className="btn btn-primary" >Login</button>
 
                 <p>Don't have an account? <a href="/SignUp">Sign Up</a></p>
             </div>

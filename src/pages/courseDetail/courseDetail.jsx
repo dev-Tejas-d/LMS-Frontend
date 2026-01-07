@@ -20,6 +20,10 @@ export default function CourseDetail() {
         fetchCourse()
     }, [courseId])
 
+    if(!course){
+        return <p>!Loading</p>
+    }
+
     const handleBuy = () => {
         const token = localStorage.getItem("token");
 
@@ -34,11 +38,12 @@ export default function CourseDetail() {
     };
 
     return (
+
         <section className="course-detail">
             <div className="course-card">
 
                 <div className="course-header">
-                    <h1>{course.name}</h1>
+                    <h1>{course?course.name:null}</h1>
                     <span className="course-category">
                         {course.category?.name}
                     </span>

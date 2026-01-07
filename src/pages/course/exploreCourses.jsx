@@ -9,7 +9,8 @@ export default function ExploreCourses(){
     const [filter, setFilter] = useState({
         minPrice : "",
         maxPrice :"",
-        category :[]
+        category :[],
+        title:""
     })
 
      const API = import.meta.env.VITE_API_URL;
