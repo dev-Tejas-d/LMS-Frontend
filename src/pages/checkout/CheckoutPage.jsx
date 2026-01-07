@@ -17,11 +17,13 @@ const CheckoutPage = ()=>{
     let [key, setkey] = useState("");
     const {id} = useParams();
     const navigate = useNavigate();
+
+    const API = import.meta.env.VITE_API_URL;
+
     useEffect( ()=>{
         const clientKey = async ()=>{
             try{
-                let res = await axios.post(`/api/payment/create-payment-intent/${id}`);
-                console.log("RES"+res.data);
+                let res = await axios.post(`${API}/api/payment/create-payment-intent/${id}`);
                 setkey(res.data)
             }catch(error){
                navigate("/login");

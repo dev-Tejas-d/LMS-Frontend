@@ -18,11 +18,9 @@ function Login(){
         setError("");
         try{
             let result = await states.login(email, password);
-            setValidation(()=>{
-                validation = !validation
-            })
-            states.setToken(true);
-            navigate("/");
+            if(result.Token){
+                navigate("/");
+            }
         }catch(err){
             if (err.response.data) {
                 setError(err.response.data);
@@ -40,7 +38,6 @@ function Login(){
             {error?<div id="ErrDiv">
             <h1>{error}</h1>
          </div>:null}
-
             <div id="form">
                 <div id="formHeading">
                     <h3>Login into your account</h3>
