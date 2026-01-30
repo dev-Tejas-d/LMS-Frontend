@@ -1,13 +1,56 @@
-footer{
+footer {
     display: flex;
     justify-content: space-evenly;
-    padding: 20px 0px 20px 0px;
+    padding: 20px 0;
     background-color: #0a1a2f;
     color: white;
+    flex-wrap: wrap;
 }
 
-footer div{
+/* Footer columns */
+footer div {
     display: flex;
     flex-direction: column;
     width: 20em;
+    gap: 6px;
+}
+
+/* Links */
+footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    padding: 30px 16px;
+  }
+
+  footer div {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  footer h4,
+  footer h5 {
+    margin-bottom: 8px;
+  }
+
+  footer p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  footer a {
+    font-size: 15px;
+    padding: 4px 0;
+  }
 }

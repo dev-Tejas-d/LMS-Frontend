@@ -1,39 +1,83 @@
-#form{
+#loginForm {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+#form {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    justify-self: center;
+    width: 40%;
+    padding: 50px;
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
     box-shadow: 8px 5px 10px black;
 }
 
-#inputs{
+#inputs {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 }
 
-#formHeading{
+#inputs input {
+    height: 40px;
+    padding: 8px 10px;
+    font-size: 14px;
+}
+
+#formHeading {
     text-align: center;
 }
 
-#form{
-        margin: 20px;
-        padding: 50px;
-        border: 1px solid black;
-        border-radius: 10px;
-        width: 40%;
-}
-
-#remberMeSection{
+#remberMeSection {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-#loginForm{
-    margin-top: 100px;
-}
-
-#ErrDiv{
+#ErrDiv {
     background-color: rgba(255, 0, 0, 0.215);
-    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
+@media (max-width: 600px) {
+
+  #loginForm {
+    margin-top: 140px;
+    margin-bottom: 60px;
+    padding: 0 12px;
+  }
+
+  #form {
+    width: 100%;
+    padding: 24px;
+    margin: 0;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  }
+
+  #inputs input {
+    height: 48px;
+    font-size: 16px; /* prevents zoom on iOS */
+  }
+
+  #remberMeSection {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  button {
+    height: 48px;
+    font-size: 16px;
+    border-radius: 999px;
+  }
+
+  #ErrDiv h1 {
+    font-size: 14px;
+  }
 }
