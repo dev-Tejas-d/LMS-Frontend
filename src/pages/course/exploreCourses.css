@@ -43,3 +43,43 @@
     margin-bottom: 100px;
     box-shadow: 2px 4px 4px;
 }
+
+#mobileFilterBtn {
+  display: none;
+}
+
+
+
+@media (max-width: 768px) {
+
+  #explorePgCont {
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* Show filter button */
+  #mobileFilterBtn {
+    display: block;
+    margin: 16px auto;
+    padding: 10px 18px;
+    background-color: rgb(7, 87, 215);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  /* Filter moves to top */
+  #filterList {
+    width: 100%;
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  /* Courses grid adjusts */
+  #courseList {
+    grid-template-columns: repeat(1, 1fr);
+    height: auto;
+  }
+}

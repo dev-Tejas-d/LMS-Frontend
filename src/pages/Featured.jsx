@@ -33,10 +33,16 @@ export default function Featured(){
                 </div>
                 <a href="/">View All Courses-- </a>
             </div>
+            <div id="featuredWrapper">
             <div id="featuredDiv">
                 {   
                  Array.isArray(courses) && courses.map((course)=><CourseCard key={course._id} course = {course}/>)
                 }
+            </div>
+
+            <div className="swipeHint">
+                <span>›</span>
+            </div>
             </div>
         </div>
         </>

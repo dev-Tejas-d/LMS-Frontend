@@ -7,8 +7,10 @@ export default function Filter({onFilterChange}){
     const [minPrice, setMinPrice] = useState("");
     const [maxPrice, setMaxPrice] = useState("");
     const [selectedCategories, setSelectedCategories] = useState([]);
+    const [showFilter, setShowFilter] = useState(false);
 
-     const API = import.meta.env.VITE_API_URL;
+
+    const API = import.meta.env.VITE_API_URL;
 
     useEffect(()=>{
         let fetchCategory = async ()=>{
@@ -17,6 +19,7 @@ export default function Filter({onFilterChange}){
         }
 
         fetchCategory();
+        
     }, []);
 
     let HandleSubmit = (e)=>{
@@ -47,7 +50,7 @@ export default function Filter({onFilterChange}){
                 {
                  Array.isArray(categorys) && categorys.map((category)=>{
                     return(
-                        <div id="categoryItem" key={category._id}>
+                        <div className="categoryItem" key={category._id}>
                         <input id={category._id}  type="checkbox" value={selectedCategories} onChange={()=>handleCheckboxChange(category._id)}></input>
                         <label htmlFor={category._id}>{category.name}</label> 
                         </div>

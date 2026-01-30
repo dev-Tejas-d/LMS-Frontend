@@ -13,6 +13,9 @@ export default function ExploreCourses(){
         title:""
     })
 
+    const [showFilter, setShowFilter] = useState(false);
+
+
      const API = import.meta.env.VITE_API_URL;
 
     useEffect( ()=>{
@@ -32,25 +35,43 @@ export default function ExploreCourses(){
 
     return (
         <>
-        <section id="EplrCrsSection">
-           
+            <section id="EplrCrsSection">
+
             <div id="explrCrsHeadings">
                 <h1>Explore Courses</h1>
                 <p>Discover top-quality courses to help you master in demand skill</p>
             </div>
+
+            {/* Mobile Filter Toggle */}
+            <button
+                id="mobileFilterBtn"
+                onClick={() => setShowFilter(prev => !prev)}
+            >
+                {showFilter ? "Hide Filters" : "Show Filters"}
+            </button>
+
             <div id="explorePgCont">
+
+                {/* Filter */}
+                {(showFilter || window.innerWidth > 768) && (
                 <div id="filterList">
-                    <h1>Filter</h1> 
-                    <hr/>
-                    <Filter  onFilterChange = {setFilter}/>
+                    <h1>Filter</h1>
+                    <hr />
+                    <Filter onFilterChange={setFilter} />
                 </div>
+                )}
+
+                {/* Courses */}
                 <div id="courseList">
-                {  
-                    Array.isArray(courses) && courses.map((course)=><CourseCard key={course._id} course= {course}/>)
-                }
+                {Array.isArray(courses) &&
+                    courses.map(course => (
+                    <CourseCard key={course._id} course={course} />
+                    ))}
                 </div>
+
             </div>
-        </section>
+            </section>
         </>
-    )
+        );
+
 }

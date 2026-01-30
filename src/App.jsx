@@ -7,7 +7,7 @@ import SignUp from "./pages/signUp";
 import Layout from "./component/layout.jsx";
 import CourseDetail from "./pages/courseDetail/courseDetail.jsx";
 import CheckoutPage from "./pages/checkout/CheckoutPage.jsx";
-
+//lms/courses/id
 function App() {
  const routes =  createBrowserRouter([
   {
