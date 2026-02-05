@@ -26,7 +26,6 @@ export default function CourseDetail() {
 
     const handleBuy = () => {
         const token = localStorage.getItem("token");
-
         if (!token) {
             navigate("/login", {
                 state: { from: `/courses/${course._id}` }

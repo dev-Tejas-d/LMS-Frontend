@@ -6,7 +6,8 @@ import { useContext } from "react";
 
 function Navbar(){
     let states = useContext(Authcontext);
-
+    console.log("token value:", states.token);
+    console.log("type:", typeof states.token);
     return (
         <>
         <nav>
@@ -18,7 +19,7 @@ function Navbar(){
                     <Link to="courses">
                     <button className="btn btn-success">Courses</button>
                     </Link>
-                    {states.token?<Link><button className="btn btn-primary">Mycourse</button></Link>:<Link to="Login"><button className="btn btn-primary">Login</button>
+                    {states.token==null?<Link to="Login"><button className="btn btn-primary">Login</button></Link>:<Link><button className="btn btn-primary">My course</button>
                     </Link>}
                 </div>
             </div>

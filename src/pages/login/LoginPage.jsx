@@ -1,8 +1,10 @@
 import "./Login.css"
+
+import axios from "axios";
 import { useContext } from "react";
-import { Authcontext } from "../context/AuthContext";
+import { Authcontext } from "../../context/AuthContext";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login(){
 
@@ -10,34 +12,28 @@ function Login(){
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
     let [error, setError] = useState("");
-    let [validation, setValidation] = useState(false);
-    const navigate = useNavigate();
+    let [success, setSuccess] = useState("");
+
+     const API = import.meta.env.VITE_API_URL;
 
    let handleLogin = async(e)=>{
         e.preventDefault();
         setError("");
         try{
-            let result = await states.login(email, password);
-            if(result.Token){
-                navigate("/");
-            }
+            let {data} = await axios.post(`${API}/api/user/login`, {email, password});
+
+            setSuccess(`Hello ${email}, Login successful!.`);
+            states.setToken(data.token);
         }catch(err){
-            if (err.response.data) {
-                setError(err.response.data);
-                console.log(error);
-            } 
-            else {
-                setError("Something went wrong. Please try again.");
+            if(err.response.data){
+                setError(err.response.data.message);
             }
         }
-       
    }
+
     return (
         <>        
-        <form onSubmit={handleLogin} id="loginForm">
-            {error?<div id="ErrDiv">
-            <h1>{error}</h1>
-         </div>:null}
+        <form onSubmit={(e)=>handleLogin(e)} id="loginForm">
             <div id="form">
                 <div id="formHeading">
                     <h3>Login into your account</h3>
@@ -57,12 +53,17 @@ function Login(){
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary" >Login</button>
-
+                    {
+                        error? <div className="alert alert-danger" role="alert">{error}</div>:null
+                    }
+                    {
+                        success?<div className="alert alert-success" role="alert">{success}</div>:null
+                    }
                 <p>Don't have an account? <a href="/SignUp">Sign Up</a></p>
             </div>
-           
              </div>
         </form>
+
          
         </>
     )

@@ -1,42 +1,20 @@
-    import axios from "axios";
     import { createContext, useState, useEffect } from "react";
 
     export const Authcontext = createContext();
 
 
     function AuthProvider({children}){
-        const [token, setToken] = useState(null);
+        const [token, setToken] = useState(()=>{
+        let storedToken= localStorage.getItem("token");
+        return storedToken && storedToken !== "null"?storedToken:null;
+    });
 
-        const API = import.meta.env.VITE_API_URL;
-
-        useEffect(() => {
-            const savedToken = localStorage.getItem("token");
-
-            if (savedToken) {
-                setToken(savedToken);
-                axios.defaults.headers.common["Authorization"] = `Bearer ${savedToken}`;
-            }
-
-        }, []);
-
-
-
-        const login = async (email, password)=>{
-            try{
-                const {data} = await axios.post(`${API}/api/user/login`, {email, password});
-                localStorage.setItem("token", data.Token);
-                console.log(data)
-                setToken(data.Token)
-                axios.defaults.headers.common["Authorization"] = `Bearer ${data.Token}` ;
-                return data;
-
-            }catch(error){
-                throw error;
-            }
-        }
+        useEffect(()=>{
+            localStorage.setItem("token", token);
+        }, [token])
         
         return (
-        <Authcontext.Provider value={{token, setToken,login}}>
+        <Authcontext.Provider value={{token, setToken}}>
             {children}
         </Authcontext.Provider>
         )

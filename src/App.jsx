@@ -1,13 +1,13 @@
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./pages/LoginPage";
+import Login from "./pages/login/LoginPage.jsx";
 import Home from "./pages/Home";
 import ExploreCourses from "./pages/course/exploreCourses.jsx";
-import SignUp from "./pages/signUp";
+import SignUp from "./pages/registration/signUp.jsx";
 import Layout from "./component/layout.jsx";
 import CourseDetail from "./pages/courseDetail/courseDetail.jsx";
 import CheckoutPage from "./pages/checkout/CheckoutPage.jsx";
-//lms/courses/id
+
 function App() {
  const routes =  createBrowserRouter([
   {
