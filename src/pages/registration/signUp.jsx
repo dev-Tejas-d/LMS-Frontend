@@ -15,11 +15,10 @@ export default function SignUp(){
     let navigate = useNavigate();
 
     const API = import.meta.env.VITE_API_URL;
-    
+
     let handleRegistration = async (e)=>{
         e.preventDefault();
         setError("");
-        setSuccess("");
         setLoading(true);
         let name = nameInput.current.value;
         let email = emailInput.current.value;
