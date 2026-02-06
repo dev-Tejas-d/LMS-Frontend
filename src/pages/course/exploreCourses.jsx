@@ -3,6 +3,7 @@ import "../course/exploreCourses.css"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Filter from "../../component/filter/Filter.jsx";
+import { MutatingDots } from "react-loader-spinner";
 
 export default function ExploreCourses(){
     const [courses, setCourses] = useState([]);
@@ -14,6 +15,8 @@ export default function ExploreCourses(){
     })
 
     const [showFilter, setShowFilter] = useState(false);
+
+    let [loading, setLoading] = useState(true);
 
 
      const API = import.meta.env.VITE_API_URL;
@@ -27,7 +30,7 @@ export default function ExploreCourses(){
             if (filter.maxPrice) params.maxPrice = filter.maxPrice;
             if (filter.category.length>0) params.category = filter.category.join(",");
            let result = await axios.get(`${API}/api/course/getAllCourse`, {params:params});
-           
+             setLoading(false);
              setCourses(Array.isArray(result.data) ? result.data : []);
         }
         fetchCourse();  
@@ -62,13 +65,28 @@ export default function ExploreCourses(){
                 )}
 
                 {/* Courses */}
+              { 
+              loading?<MutatingDots
+                visible={true}
+                height="100"
+                width="100"
+                color="#1c3cd8"
+                secondaryColor="#1c3cd8"
+                radius="12.5"
+                ariaLabel="mutating-dots-loading"
+                wrapperStyle={{
+                    alignSelf:"center",
+                    justifySelf:"center",
+                }}
+                wrapperClass=""
+            />:
                 <div id="courseList">
                 {Array.isArray(courses) &&
                     courses.map(course => (
                     <CourseCard key={course._id} course={course} />
                     ))}
                 </div>
-
+}
             </div>
             </section>
         </>

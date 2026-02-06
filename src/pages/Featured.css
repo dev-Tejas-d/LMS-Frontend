@@ -15,16 +15,15 @@
     align-items: center;
 }
 
-#featuredDiv{
-    display: flex;
-    width: 75%;
-    align-self: center;
-    gap: 20px;
-}
+
 
 #featuredWrapper {
     position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
+
 
 /* swipe arrow */
 .swipeHint {
@@ -51,6 +50,9 @@
 
 /* ===== Mobile (Swipe) ===== */
 @media (max-width: 480px) {
+    #featuredWrapper {
+    position: relative;
+}
 
     .swipeHint {
         display: flex;

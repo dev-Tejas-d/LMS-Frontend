@@ -6,8 +6,6 @@ import { useContext } from "react";
 
 function Navbar(){
     let states = useContext(Authcontext);
-    console.log("token value:", states.token);
-    console.log("type:", typeof states.token);
     return (
         <>
         <nav>

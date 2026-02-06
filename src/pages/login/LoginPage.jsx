@@ -4,28 +4,31 @@ import axios from "axios";
 import { useContext } from "react";
 import { Authcontext } from "../../context/AuthContext";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { MutatingDots } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 
 function Login(){
-
     let states = useContext(Authcontext);
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
     let [error, setError] = useState("");
-    let [success, setSuccess] = useState("");
+    let [loading, setLoading] = useState(false);
 
      const API = import.meta.env.VITE_API_URL;
 
+     let navigate = useNavigate();
    let handleLogin = async(e)=>{
         e.preventDefault();
         setError("");
         try{
+            setLoading(true);
             let {data} = await axios.post(`${API}/api/user/login`, {email, password});
-
-            setSuccess(`Hello ${email}, Login successful!.`);
+            setLoading(false);
             states.setToken(data.token);
+            navigate("/")
         }catch(err){
             if(err.response.data){
+                setLoading(false);
                 setError(err.response.data.message);
             }
         }
@@ -53,12 +56,23 @@ function Login(){
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary" >Login</button>
-                    {
-                        error? <div className="alert alert-danger" role="alert">{error}</div>:null
+                {
+                loading?<MutatingDots
+                visible={true}
+                height="100"
+                width="100"
+                color="#1c3cd8"
+                secondaryColor="#1c3cd8"
+                radius="12.5"
+                ariaLabel="mutating-dots-loading"
+                wrapperStyle={{
+                    alignSelf:"center",
+                    justifySelf:"center"
+                }}
+                wrapperClass=""
+            />: error? <div className="alert alert-danger" role="alert">{error}</div>:null
                     }
-                    {
-                        success?<div className="alert alert-success" role="alert">{success}</div>:null
-                    }
+
                 <p>Don't have an account? <a href="/SignUp">Sign Up</a></p>
             </div>
              </div>

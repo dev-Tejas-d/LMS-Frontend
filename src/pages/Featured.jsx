@@ -2,11 +2,13 @@ import "./Featured.css"
 import axios from "axios"
 import CourseCard from "../component/CourseCard";
 import { useEffect, useState } from "react"
+import { MutatingDots } from "react-loader-spinner";
 
 
 
 export default function Featured(){
     const [courses, setCourses] = useState([]);
+    let [Loading, setLoading]= useState(true);
 
     const API = import.meta.env.VITE_API_URL;
 
@@ -16,9 +18,10 @@ export default function Featured(){
            let result = await axios.get(`${API}/api/course/getAllCourse`);
             
             const data = Array.isArray(result.data) ? result.data : [];
-
+            setLoading(false)
             setCourses(data.slice(0, 3));
         }
+        
         fetchCourse();  
     },[])
 
@@ -33,6 +36,21 @@ export default function Featured(){
                 </div>
                 <a href="/">View All Courses-- </a>
             </div>
+            {
+            Loading?<MutatingDots
+                visible={true}
+                height="100"
+                width="100"
+                color="#1c3cd8"
+                secondaryColor="#1c3cd8"
+                radius="12.5"
+                ariaLabel="mutating-dots-loading"
+                wrapperStyle={{
+                    alignSelf:"center",
+                    justifySelf:"center"
+                }}
+                wrapperClass=""
+            />:
             <div id="featuredWrapper">
             <div id="featuredDiv">
                 {   
@@ -44,6 +62,8 @@ export default function Featured(){
                 <span>›</span>
             </div>
             </div>
+            
+            }
         </div>
         </>
     )
