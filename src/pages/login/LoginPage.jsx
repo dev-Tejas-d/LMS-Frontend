@@ -17,6 +17,7 @@ function Login(){
      const API = import.meta.env.VITE_API_URL;
 
      let navigate = useNavigate();
+
    let handleLogin = async(e)=>{
         e.preventDefault();
         setError("");
@@ -24,7 +25,9 @@ function Login(){
             setLoading(true);
             let {data} = await axios.post(`${API}/api/user/login`, {email, password});
             setLoading(false);
+
             states.setToken(data.token);
+            states.setProfileImg(data.profilePicture);
             navigate("/")
         }catch(err){
             if(err.response.data){

@@ -7,6 +7,8 @@ import SignUp from "./pages/registration/signUp.jsx";
 import Layout from "./component/layout.jsx";
 import CourseDetail from "./pages/courseDetail/courseDetail.jsx";
 import CheckoutPage from "./pages/checkout/CheckoutPage.jsx";
+import Profile from "./pages/profile/Profile.jsx";
+import UpdateProfile from "./pages/profile/UpdateProfile.jsx";
 
 function App() {
  const routes =  createBrowserRouter([
@@ -37,6 +39,14 @@ function App() {
       {
         path:"course/Buy/:id",
         element:<CheckoutPage/>
+      },
+      {
+        path:"profile",
+        element:<Profile/>
+      },
+      {
+        path:"updateProfile",
+        element:<UpdateProfile/>
       }
     ]
   }

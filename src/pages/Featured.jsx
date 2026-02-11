@@ -3,6 +3,7 @@ import axios from "axios"
 import CourseCard from "../component/CourseCard";
 import { useEffect, useState } from "react"
 import { MutatingDots } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 
 
 
@@ -34,7 +35,7 @@ export default function Featured(){
                     <h3>Featured Courses</h3>
                     <p>Hand picked courses from our team</p>
                 </div>
-                <a href="/">View All Courses-- </a>
+                <Link to="/courses">View All Courses-- </Link>
             </div>
             {
             Loading?<MutatingDots
