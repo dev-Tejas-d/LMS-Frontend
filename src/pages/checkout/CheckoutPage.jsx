@@ -3,7 +3,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import CheckoutForm from "../../component/course/checkoutForm";
+import CheckoutForm from "../../component/CheckoutForm";
 import { useContext } from "react";
 import { Authcontext } from "../../context/AuthContext";
 
@@ -16,6 +16,7 @@ const CheckoutPage = ()=>{
     let {token} = useContext(Authcontext);
 
     let [key, setkey] = useState("");
+    let [course, setCourse] = useState(null)
     const {id} = useParams();
     const navigate = useNavigate();
 
@@ -29,8 +30,8 @@ const CheckoutPage = ()=>{
                         Authorization: `Bearer ${token}`
                     }
                 });
-
-                setkey(res.data)
+                setkey(res.data.clientSecret);
+                setCourse(res.data.course);
             }catch(error){
                navigate("/login");
             }
@@ -39,12 +40,14 @@ const CheckoutPage = ()=>{
        clientKey();
     },[id, token])
 
-    console.log(key)
+
     return(
         <>
-            {key && <Elements stripe={stripePromise} options={{clientSecret:key}}>
-                    <CheckoutForm/>
-                </Elements>}
+            {key && (
+        <Elements stripe={stripePromise} options={{ clientSecret: key }}>
+            <CheckoutForm clientSecret={key} course={course}/>
+        </Elements>
+)}
         </>
     )
 }
