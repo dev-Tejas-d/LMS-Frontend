@@ -43,7 +43,7 @@ const CheckoutPage = ()=>{
 
     return(
         <>
-            {key && (
+            {key && course && (
         <Elements stripe={stripePromise} options={{ clientSecret: key }}>
             <CheckoutForm clientSecret={key} course={course}/>
         </Elements>
