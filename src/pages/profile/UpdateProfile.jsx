@@ -72,7 +72,6 @@ export default function UpdateProfile(){
         let age;
         if(inputAge.current.value != 0 || inputAge.current.value !=""){
             age = Number(inputAge.current.value);
-            console.log(age)
         }else{
             age = Age;
         }

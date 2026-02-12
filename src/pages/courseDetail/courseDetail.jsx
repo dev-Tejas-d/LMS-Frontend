@@ -28,7 +28,10 @@ export default function CourseDetail() {
 
     const handleBuy = () => {
         const token = localStorage.getItem("token");
-        if (!token) {
+        console.log(token)
+        let verifiedToken = token == "null"?null:token;
+
+        if (!verifiedToken) {
             navigate("/login", {
                 state: { from: `/courses/${course._id}` }
             });

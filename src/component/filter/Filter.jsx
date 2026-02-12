@@ -4,8 +4,8 @@ import "../filter/Filter.css"
 
 export default function Filter({onFilterChange}){
     const [categorys, setCategory] = useState([]);
-    const [minPrice, setMinPrice] = useState("");
-    const [maxPrice, setMaxPrice] = useState("");
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(20000);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [showFilter, setShowFilter] = useState(false);
 
@@ -24,7 +24,6 @@ export default function Filter({onFilterChange}){
 
     let HandleSubmit = (e)=>{
         e.preventDefault();
-
         onFilterChange({
             minPrice:minPrice,
             maxPrice:maxPrice,
@@ -40,11 +39,12 @@ export default function Filter({onFilterChange}){
         <>
             <form id="FilterForm" onSubmit={HandleSubmit}>
             <div id="priceFilter">
-                <label htmlFor="minPrice">Minimun price</label>
-                <input id="minPrice" type="text" value={minPrice} onChange={e => setMinPrice(e.target.value)}></input>
+                <label htmlFor="minPrice">Minimum price: {minPrice}</label>
+                <input id="minPrice" type="range" min="0" max="20000" value={minPrice} onChange={e => setMinPrice(e.target.value)}></input>
 
-                <label htmlFor="maxPrice">maximum price</label>
-                <input id="maxPrice" type="text" value={maxPrice} onChange={e => setMaxPrice(e.target.value)}></input>
+
+                <label htmlFor="maxPrice">maximum price {maxPrice}</label>
+                <input id="maxPrice" type="range"  max="20000"  value={maxPrice}  onChange={e => setMaxPrice(e.target.value)}></input>
             </div>
             <div id="categoryDiv">
                 {

@@ -29,7 +29,6 @@ export default function Profile(){
         fetchUser();
     }, [])
 
-    console.log(profile)
 
     return (
         <>

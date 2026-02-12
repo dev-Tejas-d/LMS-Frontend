@@ -6,7 +6,6 @@ import { useContext } from "react";
 
 function Navbar(){
     let states = useContext(Authcontext);
-    console.log(states.profileImg)
     return (
         <>
         <nav>
@@ -22,7 +21,7 @@ function Navbar(){
                     </Link>}
                      <div>
                     {
-                        states.token==null?null:<Link to="/profile"><img src={states.profileImg} width="50"></img></Link>
+                        states.token==null?null:<Link to="/profile"><img id="nav-profileImg" src={states.profileImg} width="50"></img></Link>
                     }    
                    </div>
                 </div>
